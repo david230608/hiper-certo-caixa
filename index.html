@@ -5,9 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hiper Certo - Supermercado</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .hidden { display: none; }
+    .container { margin-top: 20px; }
+    input { margin: 5px; padding: 5px; }
+    button { padding: 5px 10px; }
+  </style>
 </head>
 <body>
   <h1>Supermercado Hiper Certo</h1>
+
+  <!-- Botão para abrir formulário de cadastro -->
+  <button onclick="mostrarFormularioCadastro()">Cadastrar Produto</button>
+
+  <!-- Formulário de cadastro -->
+  <div id="formCadastro" class="hidden">
+    <input type="text" id="nomeProduto" placeholder="Nome do produto" />
+    <input type="text" id="codigoProduto" placeholder="Código de barras" />
+    <input type="number" id="precoProduto" placeholder="Preço" step="0.01" />
+    <button onclick="cadastrarProduto()">Salvar Produto</button>
+  </div>
+
   <div class="container">
     <div>
       <input type="text" id="codigo" placeholder="Digite o código de barras" />
@@ -20,6 +38,57 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    const produtos = [
+      { nome: "Arroz 5kg", preco: 20.99, codigo: "7891234567890" },
+      { nome: "Feijão 1kg", preco: 7.50, codigo: "7899876543210" },
+      { nome: "Leite 1L", preco: 4.30, codigo: "7894567890123" }
+    ];
+
+    let total = 0;
+
+    function mostrarFormularioCadastro() {
+      document.getElementById("formCadastro").classList.toggle("hidden");
+    }
+
+    function cadastrarProduto() {
+      const nome = document.getElementById("nomeProduto").value;
+      const codigo = document.getElementById("codigoProduto").value;
+      const preco = parseFloat(document.getElementById("precoProduto").value);
+
+      if (nome && codigo && !isNaN(preco)) {
+        produtos.push({ nome, preco, codigo });
+        alert("Produto cadastrado com sucesso!");
+
+        // limpa os campos
+        document.getElementById("nomeProduto").value = "";
+        document.getElementById("codigoProduto").value = "";
+        document.getElementById("precoProduto").value = "";
+
+        document.getElementById("formCadastro").classList.add("hidden");
+      } else {
+        alert("Preencha todos os campos corretamente!");
+      }
+    }
+
+    function adicionarProduto() {
+      const codigo = document.getElementById("codigo").value;
+      const produto = produtos.find(p => p.codigo === codigo);
+      const carrinho = document.getElementById("carrinho");
+      const totalEl = document.getElementById("total");
+
+      if (produto) {
+        const item = document.createElement("li");
+        item.textContent = `${produto.nome} - R$ ${produto.preco.toFixed(2)}`;
+        carrinho.appendChild(item);
+
+        total += produto.preco;
+        totalEl.textContent = `Total: R$ ${total.toFixed(2)}`;
+        document.getElementById("codigo").value = "";
+      } else {
+        alert("Produto não encontrado!");
+      }
+    }
+  </script>
 </body>
 </html>
