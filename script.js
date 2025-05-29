@@ -1,36 +1,63 @@
-const produtosCatalogo = {
-  "123456": { nome: "Arroz 5kg", preco: 22.99 },
-  "789012": { nome: "Feijão 1kg", preco: 6.99 },
-  "345678": { nome: "Açúcar 1kg", preco: 4.49 },
-  "901234": { nome: "Óleo de Soja", preco: 8.99 }
-};
-
-const carrinho = [];
-
-function adicionarProduto() {
-  const codigo = document.getElementById("codigo").value;
-  const produto = produtosCatalogo[codigo];
-  const carrinhoEl = document.getElementById("carrinho");
-  const totalEl = document.getElementById("total");
-
-  if (produto) {
-    carrinho.push(produto);
-
-    const li = document.createElement("li");
-    li.textContent = `${produto.nome} - R$ ${produto.preco.toFixed(2)}`;
-    carrinhoEl.appendChild(li);
-
-    const total = carrinho.reduce((soma, item) => soma + item.preco, 0);
-    totalEl.textContent = `Total: R$ ${total.toFixed(2)}`;
-
-    document.getElementById("codigo").value = ""; // limpa o campo
-  } else {
-    alert("Produto não encontrado!");
-  }
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e8fff0;
+  margin: 0;
+  padding: 0;
+  color: #333;
 }
 
-function verificarEnter(event) {
-  if (event.key === "Enter") {
-    adicionarProduto();
-  }
+header {
+  background-color: #34a853;
+  color: white;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  height: 60px;
+}
+
+main {
+  padding: 20px;
+}
+
+.produto-input {
+  margin-bottom: 20px;
+}
+
+.produto-input input {
+  padding: 10px;
+  width: 300px;
+  font-size: 16px;
+}
+
+.produto-input button {
+  padding: 10px 20px;
+  background-color: #ffa500;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.resumo {
+  font-size: 18px;
+}
+
+.resumo div {
+  margin-bottom: 10px;
 }
