@@ -10,10 +10,37 @@
     .container { margin-top: 20px; }
     input { margin: 5px; padding: 5px; }
     button { padding: 5px 10px; }
+
+    /* Estilo do cabeçalho com logo */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+
+    .header img.logo {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+
+    .header h1 {
+      font-size: 2rem;
+      color: #2e7d32;
+      margin: 0;
+    }
   </style>
 </head>
 <body>
-  <h1>Supermercado Hiper Certo</h1>
+
+  <!-- Cabeçalho com logo e nome -->
+  <div class="header">
+    <img src="logo.png" alt="Logo do Hiper Certo" class="logo" />
+    <h1>Hiper Certo</h1>
+  </div>
 
   <!-- Botão para abrir formulário de cadastro -->
   <button onclick="mostrarFormularioCadastro()">Cadastrar Produto</button>
