@@ -1,58 +1,135 @@
 body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #f7f7a1, #a8e6a3);
-  color: #225522;
   margin: 0;
-  padding: 20px;
-}
-
-h1 {
-  text-align: center;
-  color: #2f7d32;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom right, #d7fddc, #ffffff);
+  color: #333;
 }
 
 .container {
-  max-width: 500px;
-  margin: 0 auto;
-  background: white;
+  max-width: 1100px;
+  margin: auto;
   padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-input {
-  width: calc(100% - 100px);
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 28px;
+  background-color: #26a541; /* Verde médio */
+  color: white;
   padding: 10px;
-  margin-right: 10px;
-  border: 1px solid #ccc;
   border-radius: 8px;
+}
+
+.painel {
+  display: flex;
+  gap: 20px;
+}
+
+.coluna-esquerda {
+  width: 250px;
+  background-color: #e5fff0;
+  padding: 15px;
+  border: 2px solid #26a541;
+  border-radius: 10px;
+}
+
+.coluna-esquerda label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #1c512d;
+}
+
+.coluna-esquerda input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.valor-box {
+  background-color: #d4f5e3;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  text-align: right;
+  font-size: 18px;
+  font-weight: bold;
+  color: #1c512d;
+}
+
+.imagem-carrinho {
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.coluna-direita {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 15px;
+  border: 2px solid #26a541;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #333;
+}
+
+th {
+  background-color: #26a541;
+  color: white;
+  padding: 10px;
+}
+
+td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.totais {
+  background-color: #f6fff9;
+  margin-top: 20px;
+  padding: 15px;
+  border: 2px solid #26a541;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.totais div {
+  margin-bottom: 10px;
+}
+
+.totais input {
+  padding: 5px;
+  width: 120px;
+  font-size: 16px;
 }
 
 button {
-  padding: 10px;
-  background-color: #4caf50;
+  background-color: #ff9000;
   color: white;
+  padding: 10px 20px;
   border: none;
-  border-radius: 8px;
+  font-size: 16px;
+  margin-top: 10px;
+  border-radius: 6px;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #388e3c;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  padding: 8px 0;
-  border-bottom: 1px solid #ddd;
-}
-
-.total {
-  margin-top: 15px;
-  font-weight: bold;
-  font-size: 18px;
+  background-color: #e57d00;
 }
