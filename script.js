@@ -1,63 +1,43 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #e8fff0;
-  margin: 0;
-  padding: 0;
-  color: #333;
+const produtos = {
+  "7896011102856": { descricao: "BISC CARTOON FLOCOS 140G", preco: 1.59 },
+  "7896085075575": { descricao: "BIS ZABET MOUSSE LIMAO 145G", preco: 1.89 },
+  "7896011127071": { descricao: "REFRESCO TRINK 30G UVA", preco: 0.85 },
+  // adicione mais conforme necessário
+};
+
+let contador = 1;
+let subtotal = 0;
+
+function adicionarProduto() {
+  const codigo = document.getElementById('codigoBarras').value;
+  const produto = produtos[codigo];
+
+  if (produto) {
+    const tabela = document.getElementById('tabelaProdutos');
+    const tr = document.createElement('tr');
+
+    tr.innerHTML = `
+      <td>${contador++}</td>
+      <td>${codigo}</td>
+      <td>${produto.descricao}</td>
+      <td>1</td>
+      <td>${produto.preco.toFixed(2)}</td>
+      <td>${produto.preco.toFixed(2)}</td>
+    `;
+
+    tabela.appendChild(tr);
+    subtotal += produto.preco;
+    document.getElementById('subtotal').innerText = subtotal.toFixed(2).replace('.', ',');
+    calcularTroco();
+  } else {
+    alert('Produto não encontrado!');
+  }
+
+  document.getElementById('codigoBarras').value = '';
 }
 
-header {
-  background-color: #34a853;
-  color: white;
-  padding: 15px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.logo {
-  height: 60px;
-}
-
-main {
-  padding: 20px;
-}
-
-.produto-input {
-  margin-bottom: 20px;
-}
-
-.produto-input input {
-  padding: 10px;
-  width: 300px;
-  font-size: 16px;
-}
-
-.produto-input button {
-  padding: 10px 20px;
-  background-color: #ffa500;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
-
-th, td {
-  padding: 10px;
-  text-align: center;
-  border-bottom: 1px solid #ccc;
-}
-
-.resumo {
-  font-size: 18px;
-}
-
-.resumo div {
-  margin-bottom: 10px;
+function calcularTroco() {
+  const totalRecebido = parseFloat(document.getElementById('totalRecebido').value);
+  const troco = totalRecebido - subtotal;
+  document.getElementById('troco').innerText = troco >= 0 ? troco.toFixed(2).replace('.', ',') : '0,00';
 }
